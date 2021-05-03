@@ -1,0 +1,128 @@
+*{
+    margin : 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+#container{
+    width: 50%;
+    margin: auto;
+}
+body{
+    background-color:#252525;
+}
+h1{
+    color: white;
+    margin: 30px auto 10px auto;
+}
+h2{
+    color: white;
+    margin: 0px auto 10px auto;
+    font-size: 15px;
+}
+
+button{
+    background-color:#fcecdd;
+   
+}
+
+#notesList{
+  display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: flex-start; 
+   align-items:stretch;
+   margin-top:30px;
+   margin-bottom: 50px;
+  
+}
+.noteElement{
+    background-color: #f4ce8d;
+    border-radius: 20px;
+    padding: 15px;
+   width : 80%;
+   margin: auto;
+   margin-bottom: 10px;
+}
+
+
+#input-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    
+}
+
+#textInput{
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border: none;
+    color: #252525;
+    padding : 10px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+#textInput:focus{
+    font-size: 1.6rem;
+    outline-width: 0;
+}
+
+button:focus{
+    outline-width: 0;
+   } 
+
+
+button{
+    border-radius: 10px;
+    padding:10px 20px;
+    border: none;
+    background-color:#ffab91;
+    font-family: 'Poppins', sans-serif;
+    color: #392912;
+}
+button:hover{
+    border: #252525 1px solid;
+    
+}
+#add{
+    
+    width: 20%;
+    margin: auto;
+    background-color: #f4ce8d;
+    font-size: 1rem;
+}
+
+.note{
+   
+    
+    margin-bottom: 15px;
+    padding: 5px;
+    color:#392912;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    width: auto;
+    overflow-wrap: break-word;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    bottom: 0;
+    width: 100%; 
+    color: #ffab91;
+    text-align: center;
+    z-index: -1;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    #container{
+        width: 100%;
+    }
+}
+
+
+
+/* Created by Nikola Stanin 03.05.2021. */
