@@ -75,7 +75,7 @@ const newNote = () =>{
     else
     {
         //making sure there is something written in the input field
-        textInput.placeholder ="Please enter some text...";
+        textInput.placeholder ="Enter some text...";
     }
 }
 //Setting local storage data from user message
