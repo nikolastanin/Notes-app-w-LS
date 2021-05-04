@@ -3,51 +3,51 @@ let addButton = document.querySelector("#add");
 let notes = [];
 let  notesList = document.getElementById("notesList");
 
-//fetch the stored notes from local storage
-let fetchNote = () =>{
-        console.log("radi");
-        const fetchData = localStorage.getItem("array");
-        const fetchArray = JSON.parse(fetchData);
-        notes  = fetchArray;
-         console.log(fetchArray);
-    
-}
 //displaying notes 
 let displayNote = (value) =>{
+    //varibales
     let noteElement = document.createElement("div");
     let p = document.createElement('p');
     let button = document.createElement('button');
+    // let date = document.createElement("p");
+    // let newDate = new Date();
+    //setting variable values and attributes
     noteElement.setAttribute("class","noteElement");
      p.className ="note"
-    console.log("sent value"+value);
     p.innerHTML = ` <p>${notes[value].message}</p>`;
     button.innerHTML = "delete"
+    // date.innerHTML =newDate.toLocaleDateString();
+    // date.id = "date";
     //setting custom IDs so we can use those for deleting later
     setIDs(noteElement,button,notes[value].id);
     //append child to container
       notesList.appendChild(noteElement);
       noteElement.appendChild(p);
+    //   noteElement.appendChild(date);
       noteElement.appendChild(button);   
+    
 }
+
 //not the best way to set ids but it works 
 let setIDs = (container,delButton,id) =>{
         container.setAttribute("id","deletes"+id);
         delButton.setAttribute("onclick","deleteNote("+id+")");       
 }
 
-
-//check if there is something in local storage and display if there is
-    if(localStorage.getItem("array")!==null){
-        console.log("there is something");
-        fetchNote();
-        for(let i =0; i<notes.length; i++){
-            displayNote(i);
-        }      
-    }
-    else{
-        console.log("empty as a glass");    
-    }
-
+//fetching data from local storage if any displaying it
+const fetchData = localStorage.getItem("array");
+const fetchArray = JSON.parse(fetchData);
+if(fetchArray.length!==0){
+    notes = fetchArray;
+    console.log("Local storage has something>>>");
+    console.log(fetchArray);
+    for(let i =0; i<notes.length; i++){
+                 displayNote(i);
+         }     
+}
+else{
+    console.log("Local storage is empty");
+}
 
 //creating new note and sending data to setLocalStorage function
 const newNote = () =>{
