@@ -3,7 +3,7 @@ let addButton = document.querySelector("#add");
 let notes = [];
 let  notesList = document.getElementById("notesList");
 
-//display note if there is something in Local Storage
+//fetch the stored notes from local storage
 let fetchNote = () =>{
         console.log("radi");
         const fetchData = localStorage.getItem("array");
@@ -12,49 +12,40 @@ let fetchNote = () =>{
          console.log(fetchArray);
     
 }
-//ispis svih prethodih poruka
+//displaying notes 
 let displayNote = (value) =>{
     let noteElement = document.createElement("div");
     let p = document.createElement('p');
     let button = document.createElement('button');
     noteElement.setAttribute("class","noteElement");
      p.className ="note"
-    console.log("prebacaj"+value);
+    console.log("sent value"+value);
     p.innerHTML = ` <p>${notes[value].message}</p>`;
     button.innerHTML = "delete"
-    //adding custom IDs so we can delete exact notes 
-    //    noteElement.setAttribute("id","noteIndex"+value);
-    //    button.setAttribute("onclick","deleteNote("+notes[value].id+")");
-    //    button.setAttribute("id","button"+value);
-    //new delete
-        setIDs(noteElement,button,notes[value].id);
+    //setting custom IDs so we can use those for deleting later
+    setIDs(noteElement,button,notes[value].id);
     //append child to container
       notesList.appendChild(noteElement);
       noteElement.appendChild(p);
-      noteElement.appendChild(button);
-
-    // notesList.appendChild(noteElement);
-    
+      noteElement.appendChild(button);   
 }
+//not the best way to set ids but it works 
 let setIDs = (container,delButton,id) =>{
         container.setAttribute("id","deletes"+id);
-        delButton.setAttribute("onclick","deleteNote("+id+")");
-        
+        delButton.setAttribute("onclick","deleteNote("+id+")");       
 }
 
 
-//check if there is something in local storage and display if is
+//check if there is something in local storage and display if there is
     if(localStorage.getItem("array")!==null){
-        console.log("ima nesto");
+        console.log("there is something");
         fetchNote();
         for(let i =0; i<notes.length; i++){
             displayNote(i);
-        }
-        
+        }      
     }
     else{
-        console.log("nema nista");
-        
+        console.log("empty as a glass");    
     }
 
 
@@ -73,17 +64,17 @@ const newNote = () =>{
             noteObj.id = Date.now();
             noteObj.delete = "onclick=delete"+i;
           
-          console.log("ovo je vrednost i "+ i)
+          console.log("let i value in the loop = "+ i)
        
     }
-    console.log("ovo je vrednost i van petlje"+ i)
-         // 
-        displayNote(notes.length-1);
-        
+    console.log("let i value outside the loop = "+ i)
+         // -1 because the i is +1 outside the loop so a simple fix
+            displayNote(notes.length-1);   
             setLocalStorage();
     }
     else
     {
+        //making sure there is something written in the input field
         textInput.placeholder ="Please enter some text...";
     }
 }
@@ -92,11 +83,10 @@ const newNote = () =>{
         const stringifyArray = JSON.stringify(notes);
         localStorage.setItem("array",stringifyArray);
     }
-
+// deleting the notes with custom IDs, and onclick... 
+// again not the best but it works 
     let deleteNote = (value) =>{
-      
-         console.log(value);
-        
+        //  console.log(value);
         let deleteNoteElement = document.getElementById("deletes"+value);
         deleteNoteElement.remove();
         var lists = notes.filter(x => {
