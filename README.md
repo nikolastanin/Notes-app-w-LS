@@ -1,6 +1,6 @@
 
 
-# To-Do---LS
+# Notes app w/ Local Storage
 Follow up to a To Do app I made before. <br>
 In this version I added saving to Local Storage so the notes that user created can be saved and displayed when the browser tab reload's or the browser is reopened :) 
 <br>Test the app : https://nikolastanin.github.io/To-Do-w-LS/
