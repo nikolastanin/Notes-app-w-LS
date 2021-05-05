@@ -34,42 +34,42 @@ let setIDs = (container,delButton,id) =>{
         delButton.setAttribute("onclick","deleteNote("+id+")");       
 }
 
-//fetching data from local storage if any displaying it
+//checking if there is any data in Local Storage and displaying if there is
 const fetchData = localStorage.getItem("array");
 const fetchArray = JSON.parse(fetchData);
-if(fetchArray.length!==0){
+if( fetchArray == null ||fetchArray.length == 0 ){
+    console.log("Local storage is empty");
+    
+}
+else{
     notes = fetchArray;
     console.log("Local storage has something>>>");
     console.log(fetchArray);
     for(let i =0; i<notes.length; i++){
                  displayNote(i);
          }     
-}
-else{
-    console.log("Local storage is empty");
+    
 }
 
 //creating new note and sending data to setLocalStorage function
 const newNote = () =>{
     if(textInput.value!=0 ){
-        console.log("click");
+        // console.log("click");
         let noteObj  = new Object();
         let i ;
         noteObj.id = Date.now();
         noteObj.message = textInput.value;
         notes.push(noteObj);
         
-        for(i = 0; i<notes.length; i++){
-            
+        for(i = 0; i<notes.length; i++){ 
             noteObj.id = Date.now();
-            noteObj.delete = "onclick=delete"+i;
-          
-          console.log("let i value in the loop = "+ i)
-       
+            // noteObj.delete = "onclick=delete"+i; 
+        // console.log("let i value in the loop = "+ i)   
     }
-    console.log("let i value outside the loop = "+ i)
+   
          // -1 because the i is +1 outside the loop so a simple fix
-            displayNote(notes.length-1);   
+            displayNote(notes.length-1);  
+         // console.log("let i value outside the loop = "+ i) 
             setLocalStorage();
     }
     else
