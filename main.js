@@ -53,7 +53,7 @@ else{
 
 //creating new note and sending data to setLocalStorage function
 const newNote = () =>{
-    if(textInput.value!=0 ){
+    if(textInput.value !=="" ){
         // console.log("click");
         let noteObj  = new Object();
         let i ;
@@ -89,7 +89,7 @@ const newNote = () =>{
         //  console.log(value);
         let deleteNoteElement = document.getElementById("deletes"+value);
         deleteNoteElement.remove();
-        var lists = notes.filter(x => {
+        let lists = notes.filter(x => {
             return x.id != value;
           });
           notes = lists;
